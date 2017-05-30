@@ -70,7 +70,3 @@
     @endif
 
 @endsection
-
-
-
-cosa nuevaaaaa
