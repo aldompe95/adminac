@@ -36,3 +36,6 @@ Route::post('/building/{id}', array('uses' => 'AreaController@store'));
 Route::get('/area/{id}', 'AirConditionerController@index')->name('airs.index');
 Route::post('/area/{id}', array('uses' => 'AirConditionerController@store')); 
 
+/* MAINTENANCE ROUTES */
+Route::get('air/{id}', 'MaintenanceController@index')->name('maintenances.index');
+Route::post('air/{id}', array('uses' => 'MaintenanceController@store'));

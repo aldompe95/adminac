@@ -50,7 +50,7 @@
                 </table>
             </div>
         </div>
-        <a href="{{url('/building')}}">Edificios</a>    
+        <a href="{{url('/buildings')}}">Edificios</a>    
     @endif
     
 @endsection

@@ -15,12 +15,13 @@ class CreateMaintenanceTable extends Migration
     {
         Schema::create('maintenance', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('air_id');
+            $table->integer('air_conditioner_id');
             $table->string('in_charge');
             $table->string('maintenance_in_charge');
             $table->string('description');
             $table->decimal('cost', 6, 2);
             $table->date('maintenance_date');
+            $table->timestamps();
         });
     }
 

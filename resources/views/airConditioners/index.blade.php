@@ -30,7 +30,7 @@
     @if (count($airs) > 0)
         <div class="panel panel-default">
             <div class="panel-heading">
-                {{ $area }}
+                {{-- {{ $area }} --}}
             </div>
             <div class="panel-body">
                 <table class="table table-striped task-table">
@@ -59,7 +59,7 @@
                                     <div>{{ $air->remission_at }}</div>
                                 </td>                     
                                 <td>
-                                    <a href="{{url('/sensor/'.$air->id)}}">a/c</a>
+                                    <a href="{{url('/air/'.$air->id)}}">a/c</a>
                                 </td>
                             </tr>
                         @endforeach

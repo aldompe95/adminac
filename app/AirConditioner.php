@@ -2,6 +2,8 @@
 
 namespace App;
 
+use App\Area;
+use App\Maintenance;
 use Illuminate\Database\Eloquent\Model;
 
 class AirConditioner extends Model
@@ -16,5 +18,10 @@ class AirConditioner extends Model
     public function area()
     {
         return $this->belongsTo(Area::class);
+    }
+
+    public function maintenance()
+    {
+        return $this->hasMany(Maintenance::class);
     }
 }
