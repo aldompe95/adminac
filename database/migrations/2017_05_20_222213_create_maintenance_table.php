@@ -13,7 +13,7 @@ class CreateMaintenanceTable extends Migration
      */
     public function up()
     {
-        Schema::create('maintenance', function (Blueprint $table) {
+        Schema::create('maintenances', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('air_conditioner_id');
             $table->string('in_charge');
