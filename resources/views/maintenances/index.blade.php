@@ -8,7 +8,7 @@
             {{ csrf_field() }}
             <div class="form-group">
                 <label for="building-name" class="col-sm-12 control-label">Mantenimiento</label>
-                <div class="col-sm-6">
+                <div class="col-sm-8 col-sm-offset-2">
                     <span>Encargado</span><input type="text" name="in_charge" id="building-name" class="form-control">
                     <span>Encargado del mantenimiento</span><input type="text" name="maintenance_in_charge" id="building-name" class="form-control">
                     <span>Descripcion</span><input type="text" name="description" id="building-name" class="form-control">
@@ -29,7 +29,7 @@
     @if (count($maintenances) > 0)
         <div class="panel panel-default">
             <div class="panel-heading">
-                {{ $air->brand }}
+          
             </div>
             <div class="panel-body">
                 <table class="table table-striped task-table">

@@ -15,11 +15,12 @@ class CreateAirConditionersTable extends Migration
     {
         Schema::create('air_conditioners', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('area_id');
+            $table->integer('technological_id');
             $table->string('brand');
             $table->string('model');
             $table->date('purchase_at');
-            $table->date('remission_at');
+            $table->date('remission_at')->nullable(true);
+            $table->boolean('status');
             $table->timestamps();
         });
     }

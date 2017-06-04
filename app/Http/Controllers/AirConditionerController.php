@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Auth;
 use App\AirConditioner;
-use App\Area;
 use Illuminate\Http\Request;
 use App\Http\Requests\AirConditionerCreateRequest;
 use App\Repositories\AirConditionerRepository;
@@ -20,25 +19,24 @@ class AirConditionerController extends Controller
         $this->airs = $airs;
     }
 
-     public function index(Request $request, $id)
+    public function index(Request $request)
     {
-        $area = Area::find($id);
+        $technological = $request->user()->technological;
         return view('airConditioners.index', [
-            'airs' => $this->airs->forArea($area),
-            'id' => $id
+            'airs' => $this->airs->forTechnological($technological)
         ]);
     }
 
     public function store(AirConditionerCreateRequest $request)
     {
         $request->session()->flash('alert-success', 'Aire acondicionado creado satisfactoriamente');
-        Area::find($request->id)->airConditioner()->create([
+        $request->user()->technological->air()->create([
             'brand' => $request->brand,
             'model' => $request->model,
             'purchase_at' => $request->purchase_at,
-            'remission_at' => $request->remission_at
+            'status' => 0
         ]);
-        return redirect('/area/'.$request->id);
+        return redirect('/airs');
     }
 
     public function show($id)

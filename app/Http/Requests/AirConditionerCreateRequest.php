@@ -30,29 +30,25 @@ class AirConditionerCreateRequest extends FormRequest
         return [
             'brand' => 'required|max:255',
             'model' => 'required|max:255',
-            'purchase_at' => 'required|date',
-            'remission_at' => 'required|date'
-
+            'purchase_at' => 'required|date'
         ];
     }
 
     public function messages()
     {
         return [
-            'brand.required' => 'Añade el :attribute.',
+            'brand.required' => 'Añade la :attribute.',
             'model.required' => 'Añade el :attribute.',
-            'purchase_at.required' => 'Añade la :attribute.',
-            'remission_at.required' => 'Añade la :attribute.'
+            'purchase_at.required' => 'Añade la :attribute.'
         ];
     }
 
     public function attributes()
     {
         return [
-            'brand' => 'nombre de la marca',
+            'brand' => 'marca',
             'model' => 'modelo',
             'purchase_at' => 'fecha de compra',
-            'remission_at' => 'fecha de remision',
         ];
     }
 }
