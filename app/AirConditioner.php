@@ -2,7 +2,7 @@
 
 namespace App;
 
-use App\Area;
+use App\Technological;
 use App\Maintenance;
 use Illuminate\Database\Eloquent\Model;
 
@@ -12,12 +12,12 @@ class AirConditioner extends Model
         'brand',
         'model',
         'purchase_at',
-		'remission_at'
+        'status'
     ];
 
-    public function area()
+    public function technological()
     {
-        return $this->belongsTo(Area::class);
+        return $this->belongsTo(Technological::class);
     }
 
     public function maintenance()

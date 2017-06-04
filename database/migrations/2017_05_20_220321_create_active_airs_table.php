@@ -15,7 +15,7 @@ class CreateActiveAirsTable extends Migration
     {
         Schema::create('active_airs', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('air_id');
+            $table->integer('air_conditioner_id');
             $table->integer('area_id');
             $table->timestamps();
         });

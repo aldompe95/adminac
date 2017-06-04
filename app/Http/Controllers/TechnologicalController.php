@@ -11,7 +11,8 @@ class TechnologicalController extends Controller
 {
     protected $technological;
 
-    public function __construct(TechnologicalRepository $technological) {
+    public function __construct(TechnologicalRepository $technological)
+    {
         $this->middleware('auth');
 
         $this->technological = $technological;

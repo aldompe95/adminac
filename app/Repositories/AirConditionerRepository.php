@@ -1,16 +1,16 @@
 <?php
 namespace App\Repositories;
 
-use App\Area;
+use App\Technological;
 use App\AirConditioner;
 
 
 class AirConditionerRepository
 {
-    public function forArea(Area $area)
+    public function forTechnological(Technological $technological)
     {
-        return AirConditioner::where('area_id', $area->id)
-                    ->orderBy('created_at', 'asc')
+        return AirConditioner::where('technological_id', $technological->id)
+        			->orderBy('created_at', 'asc')
                     ->get();
     }
 }

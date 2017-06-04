@@ -18,7 +18,7 @@ Route::get('/', function () {
 
 /* USERS ROUTES */
 Auth::routes();
-Route::get('/auth/logout', 'Auth\LoginController@logout'); // This route is made cause the original logout is a POST and we want a GET :p
+Route::get('/auth/logout', 'Auth\LoginController@logout'); // This route is made cause the original logout is a POST and we want a GET
 
 /* TECHNOLOGICALS ROUTES */
 Route::get('/technologicals', 'TechnologicalController@index');
@@ -33,9 +33,11 @@ Route::get('/building/{id}', 'AreaController@index')->name('areas.index');
 Route::post('/building/{id}', array('uses' => 'AreaController@store'));
 
 /* AIR CONDITIONERS ROUTES */
-Route::get('/area/{id}', 'AirConditionerController@index')->name('airs.index');
-Route::post('/area/{id}', array('uses' => 'AirConditionerController@store')); 
+Route::get('/airs', 'AirConditionerController@index')->name('airs.index');
+Route::post('/airs', 'AirConditionerController@store');
 
 /* MAINTENANCE ROUTES */
-Route::get('air/{id}', 'MaintenanceController@index')->name('maintenances.index');
-Route::post('air/{id}', array('uses' => 'MaintenanceController@store'));
+Route::get('/air/{id}', 'MaintenanceController@index')->name('maintenances.index');
+Route::post('/air/{id}', array('uses' => 'MaintenanceController@store'));
+
+/* ACTIVE AIRS ROUTES */

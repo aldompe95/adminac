@@ -22,4 +22,9 @@ class Technological extends Model
     {
         return $this->hasMany(Building::class);
     }
+
+    public function air()
+    {
+        return $this->hasMany(AirConditioner::class);
+    }
 }
