@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Maintenance;
 use App\AirConditioner;
-use App\Http\Request\MaintenanceCreateRequest;
+use App\Http\Requests\MaintenanceCreateRequest;
 use App\Repositories\MaintenanceRepository;
 
 class MaintenanceController extends Controller
@@ -28,7 +28,7 @@ class MaintenanceController extends Controller
         ]);
     }
 
-    public function store(Request $request)
+    public function store(MaintenanceCreateRequest $request)
     {
         $request->session()->flash('alert-success', 'Mantenimiento creado satisfactoriamente');
         AirConditioner::find($request->id)->maintenance()->create([
