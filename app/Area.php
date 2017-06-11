@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Building;
+use App\ActiveAir;
 use Illuminate\Database\Eloquent\Model;
 
 class Area extends Model
@@ -16,8 +17,8 @@ class Area extends Model
         return $this->belongsTo(Building::class);
     }
 
-    public function airconditioner()
+    public function activeAir()
     {
-        return $this->hasMany(AirConditioner::class);
+        return $this->hasMany(ActiveAir::class);
     }
 }
