@@ -2,83 +2,48 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
+use App\ActiveAir;
+use App\AirConditioner;
+use App\Area;
+use App\Repositories\ActiveAirRepository;
 use Illuminate\Http\Request;
 
 class ActiveAirController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    protected $airs;
+
+    public function __construct(ActiveAirRepository $airs)
     {
-        //
+        $this->middleware('auth');
+
+        $this->airs = $airs;
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function index(Request $request, $id)
     {
-        //
+        $technological = $request->user()->technological;
+        $area = Area::find($id);
+        return view('activeAirs.index', [
+            'airs' => $this->airs->forArea($area),
+            'inactive_airs' => $this->airs->inactive($technological),
+            'id' => $id
+        ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        $request->session()->flash('alert-success', 'Aire acondicionado asignado satisfactoriamente');
+        foreach ($request->air as $air) {
+            $asign = Area::find($request->id)->activeAir()->create([
+                'air_conditioner_id' => $air
+            ]);
+            if ($asign) {
+                $updateStatus = AirConditioner::find($air);
+                $updateStatus->status = 1;
+                $updateStatus->save();
+            }
+            return redirect('/area/'.$request->id);
+        }
     }
 }

@@ -41,8 +41,10 @@ Route::get('/air/{id}', 'MaintenanceController@index')->name('maintenances.index
 Route::post('/air/{id}', array('uses' => 'MaintenanceController@store'));
 
 /* ACTIVE AIRS ROUTES */
-
+Route::get('/area/{id}', 'ActiveAirController@index')->name('active.index');
+Route::post('/area/{id}', array('uses' => 'ActiveAirController@store'));
 
 /* SENSORS ROUTES */
 Route::get('/sensors', 'SensorController@index');
 Route::post('/sensors', 'SensorController@store');
+
