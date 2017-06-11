@@ -55,7 +55,8 @@ class MaintenanceCreateRequest extends FormRequest
         ];
     }
 
-    public function attributes {
+    public function attributes() 
+    {
         return [
             'in_charge' => 'encargado',
             'maintenance_in_charge' => 'encargado de hacer el mantenimiento',
