@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePerformanceTable extends Migration
+class CreatePerformancesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreatePerformanceTable extends Migration
      */
     public function up()
     {
-        Schema::create('performance', function (Blueprint $table) {
+        Schema::create('performances', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('active_air_id');
             $table->date('day');
@@ -30,6 +30,6 @@ class CreatePerformanceTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('performance');
+        Schema::dropIfExists('performances');
     }
 }

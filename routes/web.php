@@ -48,3 +48,6 @@ Route::post('/area/{id}', array('uses' => 'ActiveAirController@store'));
 Route::get('/sensors', 'SensorController@index');
 Route::post('/sensors', 'SensorController@store');
 
+/* PERFORMANCE ROUTES */
+Route::get('/activeAir/{id}', 'PerformanceController@index')->name('performances.index');
+Route::post('/activeAir/{id}', array('uses' => 'PerformanceController@store'));

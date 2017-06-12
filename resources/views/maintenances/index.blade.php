@@ -14,6 +14,7 @@
                     <span>Descripcion</span><input type="text" name="description" id="building-name" class="form-control">
                     <span>Costo</span><input type="number" step="0.01" name="cost" id="building-name" class="form-control">
                     <span>Fecha de mantenimiento</span><input type="date" name="maintenance_date" id="building-name" class="form-control">
+                </div>
             </div>
             <!-- Add AirConditioner Button -->
             <div class="form-group">
@@ -61,9 +62,6 @@
                                 <td>
                                     <div>{{ $maintenance->maintenance_date }}</div>
                                 </td>                     
-                                <td>
-                                    <a href="{{url('/air/'.$maintenance->id)}}">a/c</a>
-                                </td>
                             </tr>
                         @endforeach
                     </tbody>
