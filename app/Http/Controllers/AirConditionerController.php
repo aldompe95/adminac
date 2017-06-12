@@ -29,13 +29,13 @@ class AirConditionerController extends Controller
 
     public function store(AirConditionerCreateRequest $request)
     {
-        $request->session()->flash('alert-success', 'Aire acondicionado creado satisfactoriamente');
-        $request->user()->technological->air()->create([
+        $request->user()->technological->airConditioner()->create([
             'brand' => $request->brand,
             'model' => $request->model,
             'purchase_at' => $request->purchase_at,
             'status' => 0
         ]);
+        $request->session()->flash('alert-success', 'Aire acondicionado creado satisfactoriamente');
         return redirect('/airs');
     }
 

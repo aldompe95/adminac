@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
+    <!-- Display Validation Errors -->
+    @include('common.errors')
     <div class="panel-body">
-        <!-- Display Validation Errors -->
-        @include('common.errors')
-        <!-- New Area Form -->
+        <!-- New AirConditioner Form -->
         <form action="/airs" method="POST" class="form-horizontal">
             {{ csrf_field() }}
             <div class="form-group">
@@ -15,7 +15,7 @@
                     <span>Fecha de compra</span><input type="date" name="purchase_at" id="purchase-date" class="form-control">
                 </div>
             </div>
-            <!-- Add Area Button -->
+            <!-- Add AirConditioner Button -->
             <div class="form-group">
                 <div class="col-sm-offset-3 col-sm-6">
                     <button type="submit" class="btn btn-default">
@@ -28,24 +28,37 @@
     @if (count($airs) > 0)
         <div class="panel panel-default col-sm-8 col-sm-offset-2">
             <div class="panel-heading">
+               Aires acondicionados
             </div>
             <div class="panel-body">
                 <table class="table table-striped task-table">
                     <!-- Table Headings -->
                     <thead>
-                        <th>Aires Acondicionados</th>
+                        <th>Numero de serie</th>
+                        <th>Marca</th>
+                        <th>Modelo</th>
+                        <th>Fecha de compra</th>
                         <th>&nbsp;</th>
                     </thead>
                     <!-- Table Body -->
                     <tbody>
                         @foreach ($airs as $air)
                             <tr>
-                                <!-- Building Name -->
-                                <td class="table-text">
+                                <!-- Airconditioner Info -->
+                                <td>
+                                    <div>numero de serie</div>
+                                </td>
+                                <td>
                                     <div>{{ $air->brand }}</div>
                                 </td>
                                 <td>
-                                   <a href="{{url('/air/'.$air->id)}}">a/c</a>
+                                   <div>{{ $air->model }}</div>
+                                </td>
+                                <td>
+                                   <div>{{ $air->purchase_at }}</div>
+                                </td>
+                                <td>
+                                   <a href="{{url('/air/'.$air->id)}}">Mantenimientos</a>
                                 </td>
                             </tr>
                         @endforeach
@@ -55,4 +68,3 @@
         </div>
     @endif
 @endsection
-

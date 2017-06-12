@@ -10,7 +10,8 @@ class ActiveAirRepository
 {
     public function forArea(Area $area)
     {
-        return ActiveAir::where('area_id', $area->id)
+        return $air = ActiveAir::where('area_id', $area->id)
+        			->where('status', $area->id)
         			->orderBy('created_at', 'asc')
                     ->get();
     }
