@@ -1,15 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-
+    <!-- Display Validation Errors -->
+    @include('common.errors')
 	<div class="panel-body">
-        <!-- Display Validation Errors -->
-        @include('common.errors')
         <!-- New Building Form -->
         <form action="/building" method="POST" class="form-horizontal">
             {{ csrf_field() }}
             <div class="form-group">
-                <label for="building-name" class="col-sm-12 control-label">Nuevo Edificio</label>
+                <label for="building-name" class="col-sm-8 col-sm-offset-2">Nuevo Edificio</label>
                 <div class="col-sm-8 col-sm-offset-2">
                     <span>Nombre</span><input type="text" name="name" id="building-name" class="form-control">
                 </div>

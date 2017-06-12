@@ -17,6 +17,7 @@ class CreateActiveAirsTable extends Migration
             $table->increments('id');
             $table->integer('air_conditioner_id');
             $table->integer('area_id');
+            $table->boolean('status');
             $table->timestamps();
         });
     }

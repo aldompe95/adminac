@@ -33,11 +33,11 @@ class AreaController extends Controller
 
     public function store(AreaCreateRequest $request)
     {
-        $request->session()->flash('alert-success', 'Area creada satisfactoriamente');
         Building::find($request->id)->area()->create([ // Esto es lo mismo que la linea de abajo
         //$request->user()->technological->building()->find($request->id)->area()->create([
             'name' => $request->name
         ]);
+        $request->session()->flash('alert-success', 'Area creada satisfactoriamente');
         return redirect('/building/'.$request->id);
     }
 

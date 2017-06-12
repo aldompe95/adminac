@@ -7,6 +7,7 @@ use App\ActiveAir;
 use App\AirConditioner;
 use App\Area;
 use App\Repositories\ActiveAirRepository;
+use App\Http\Requests\ActiveAirAssignRequest;
 use Illuminate\Http\Request;
 
 class ActiveAirController extends Controller
@@ -31,19 +32,32 @@ class ActiveAirController extends Controller
         ]);
     }
 
-    public function store(Request $request)
+    public function store(ActiveAirAssignRequest $request)
     {
-        $request->session()->flash('alert-success', 'Aire acondicionado asignado satisfactoriamente');
         foreach ($request->air as $air) {
             $asign = Area::find($request->id)->activeAir()->create([
-                'air_conditioner_id' => $air
+                'air_conditioner_id' => $air,
+                'status' => 1
             ]);
             if ($asign) {
                 $updateStatus = AirConditioner::find($air);
                 $updateStatus->status = 1;
                 $updateStatus->save();
             }
-            return redirect('/area/'.$request->id);
         }
+        $request->session()->flash('alert-success', 'Aire acondicionado asignado satisfactoriamente');
+        return redirect('/area/'.$request->id);
+    }
+    public function removeAir(Request $request, $id, $airId, $areaId)
+    {   
+        $updateStatusAir = AirConditioner::find($airId);
+        $updateStatusAir->status = 0;
+        $updateStatusActive = ActiveAir::find($id);
+        $updateStatusActive->status = 0;
+        $updateStatusAir->save();
+        $updateStatusActive->save();
+        // Tenemos que cambiar el valor del status del sensor
+        $request->session()->flash('alert-success', 'Aire acondicionado removido satisfactoriamente');
+        return redirect('/area/'.$areaId);
     }
 }
