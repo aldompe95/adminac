@@ -30,7 +30,8 @@ class AirConditionerCreateRequest extends FormRequest
         return [
             'brand' => 'required|max:255',
             'model' => 'required|max:255',
-            'purchase_at' => 'required|date'
+            'purchase_at' => 'required|date',
+            'nserie' => 'required|max:255'
         ];
     }
 
@@ -39,7 +40,8 @@ class AirConditionerCreateRequest extends FormRequest
         return [
             'brand.required' => 'Añade la :attribute.',
             'model.required' => 'Añade el :attribute.',
-            'purchase_at.required' => 'Añade la :attribute.'
+            'purchase_at.required' => 'Añade la :attribute.',
+            'nserie.required' => 'Añade el :attribute.'
         ];
     }
 
@@ -49,6 +51,7 @@ class AirConditionerCreateRequest extends FormRequest
             'brand' => 'marca',
             'model' => 'modelo',
             'purchase_at' => 'fecha de compra',
+            'nserie' => 'numero de serie'
         ];
     }
 }

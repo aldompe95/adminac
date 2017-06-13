@@ -15,6 +15,7 @@ class CreateAirConditionersTable extends Migration
     {
         Schema::create('air_conditioners', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('nserie');
             $table->integer('technological_id');
             $table->string('brand');
             $table->string('model');

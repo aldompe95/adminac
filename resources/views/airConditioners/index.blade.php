@@ -8,8 +8,9 @@
         <form action="/airs" method="POST" class="form-horizontal">
             {{ csrf_field() }}
             <div class="form-group">
-                <label for="new-air" class="col-sm-12 control-label">Nuevo Aire Acondicionado</label>
+                <label for="new-air" class="col-sm-8 col-sm-offset-2">Nuevo Aire Acondicionado</label>
                 <div class="col-sm-8 col-sm-offset-2">
+                    <span>Numero de serie</span><input type="text" name="nserie" id="nserie-name" class="form-control">
                     <span>Marca</span><input type="text" name="brand" id="brand-name" class="form-control">
                     <span>Modelo</span><input type="text" name="model" id="model-name" class="form-control">
                     <span>Fecha de compra</span><input type="date" name="purchase_at" id="purchase-date" class="form-control">
@@ -17,7 +18,7 @@
             </div>
             <!-- Add AirConditioner Button -->
             <div class="form-group">
-                <div class="col-sm-offset-3 col-sm-6">
+                <div class="col-sm-8 col-sm-offset-2">
                     <button type="submit" class="btn btn-default">
                         <i class="fa fa-plus"></i> Agregar Aire
                     </button>
@@ -46,7 +47,7 @@
                             <tr>
                                 <!-- Airconditioner Info -->
                                 <td>
-                                    <div>numero de serie</div>
+                                    <div>{{ $air->nserie }}</div>
                                 </td>
                                 <td>
                                     <div>{{ $air->brand }}</div>

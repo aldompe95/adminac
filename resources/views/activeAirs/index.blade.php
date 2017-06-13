@@ -30,27 +30,35 @@
     @if (count($airs) > 0)
         <div class="panel panel-default col-sm-8 col-sm-offset-2">
             <div class="panel-heading">
-            Edificio - Area especifica
+            Edificio - Area especifica Aires acondicionados
             </div>
             <div class="panel-body">
                 <table class="table table-striped task-table">
                     <!-- Table Headings -->
                     <thead>
-                        <th>Aires Acondicionados</th>
-                        <th>&nbsp;</th>
+                        <th>Numero de serie</th>
+                        <th>Marca</th>
+                        <th>Modelo</th>
                         <th>&nbsp;</th>
                         <th>&nbsp;</th>
                     </thead>
                     <!-- Table Body -->
                     <tbody>
+                        <?php $i = 0; ?>
                         @foreach ($airs as $air)
                             <tr>
                                 <!-- ActiveAir Info -->
-                                <td class="table-text">
-                                    <div>{{ $air }}</div>
+                                <td>
+                                    <div>{{ $air_conditioners[$i]->nserie }}</div>
                                 </td>
                                 <td>
-                                    <a href="{{url('/air/'.$air->id)}}">Sensores</a><br>
+                                    <div>{{ $air_conditioners[$i]->brand }}</div>
+                                </td>
+                                <td>
+                                    <div>{{ $air_conditioners[$i]->model }}</div>
+                                </td>
+                                <td>
+                                    <a href="{{url('/air/'.$air->id)}}">Sensor</a><br>
                                 </td>
                                 <td>
                                     <a href="{{url('/air/'.$air->air_conditioner_id)}}">Matenimientos</a><br>
@@ -59,6 +67,7 @@
                                     <a href="{{ action('ActiveAirController@removeAir',array($air->id, $air->air_conditioner_id, $air->area_id)) }}">Retirar</a>
                                 </td>
                             </tr>
+                            <?php $i += 1; ?>
                         @endforeach
                     </tbody>
                 </table>

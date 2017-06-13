@@ -25,9 +25,17 @@ class ActiveAirController extends Controller
     {
         $technological = $request->user()->technological;
         $area = Area::find($id);
+        $activeAirs = $this->airs->forArea($area);
+        $airConditioner = array();
+        $i = 0;
+        foreach ($activeAirs as $activeAir) {
+            $airConditioner[$i] = AirConditioner::find($activeAir->air_conditioner_id);
+            $i++;
+        }
         return view('activeAirs.index', [
-            'airs' => $this->airs->forArea($area),
+            'airs' => $activeAirs,
             'inactive_airs' => $this->airs->inactive($technological),
+            'air_conditioners' => $airConditioner,
             'id' => $id
         ]);
     }

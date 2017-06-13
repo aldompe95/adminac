@@ -33,7 +33,8 @@ class AirConditionerController extends Controller
             'brand' => $request->brand,
             'model' => $request->model,
             'purchase_at' => $request->purchase_at,
-            'status' => 0
+            'status' => 0,
+            'nserie' => $request->nserie
         ]);
         $request->session()->flash('alert-success', 'Aire acondicionado creado satisfactoriamente');
         return redirect('/airs');
