@@ -16,8 +16,8 @@
                     <a class="navbar-brand" href="#">ADMINAC</a>
                 </div>
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">PANEL</a></li>
-                    <li><a href="#">INVENTARIO A/C</a></li>
+                    <li class="active"><a href="/buildings">PANEL</a></li>
+                    <li><a href="/airs">INVENTARIO A/C</a></li>
                     <li><a href="#">INVENTARIO SENSORES</a></li>
                 </ul>
             </div>

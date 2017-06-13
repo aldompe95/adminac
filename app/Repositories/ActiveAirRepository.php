@@ -23,4 +23,10 @@ class ActiveAirRepository
         			->orderBy('created_at', 'asc')
                     ->get();
     }
+
+    public function getAirs(ActiveAir $air)
+    {
+    	return AirConditioner::where('id', $air->air_conditioner_id)
+    				->get();
+    }
 }

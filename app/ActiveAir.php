@@ -11,7 +11,7 @@ use App\Performance;
 class ActiveAir extends Model
 {
 
-	  protected $fillable = [
+	protected $fillable = [
         'air_conditioner_id',
         'status'
     ];

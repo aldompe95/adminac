@@ -12,7 +12,8 @@ class AirConditioner extends Model
         'brand',
         'model',
         'purchase_at',
-        'status'
+        'status',
+        'nserie'
     ];
 
     public function technological()
