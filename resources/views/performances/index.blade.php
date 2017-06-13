@@ -28,7 +28,7 @@
     @if (count($performances) > 0)
         <div class="panel panel-default">
             <div class="panel-heading">
-          
+                <p>Horas {{ $hours }}</p>
             </div>
             <div class="panel-body">
                 <table class="table table-striped task-table">
@@ -37,6 +37,7 @@
                         <th>Día</th>
                         <th>Hora de encendido</th>
                         <th>Hora de apagado</th>
+                        <th>Horas totales</th>
                     </thead>
                     <!-- Table Body -->
                     <tbody>
@@ -52,7 +53,6 @@
                                 <td>
                                     <div>{{ $performance->switched_off_hour }}</div>
                                 </td>
-                            </tr>
                         @endforeach
                     </tbody>
                 </table>
