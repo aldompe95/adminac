@@ -21,8 +21,14 @@ class PerformanceController extends Controller
     public function index(Request $request, $id)
     {
         $activeAir = ActiveAir::find($id);
+        $items = $this->performances->hours($activeAir);
+        $hours = 0;
+        foreach ($items as $item) {
+            $hours = $hours + ($item->switched_off_hour - $item->switched_on_hour);
+        }
         return view('performances.index', [
             'performances' => $this->performances->forActiveAir($activeAir),
+            'hours' => $hours,
             'id' => $id
         ]);
     }
