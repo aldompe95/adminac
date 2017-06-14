@@ -11,11 +11,7 @@ class Sensor extends Model
         'type',
         'brand',
         'model',
-        'description'
+        'description',
+        'status'
     ];
-
-    public function activeAir()
-    {
-        return $this->hasOne(ActiveAir::class);
-    }
 }

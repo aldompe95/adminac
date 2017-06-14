@@ -13,12 +13,12 @@
         <nav class="navbar navbar-default">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#">ADMINAC</a>
+                    <a class="navbar-brand" href="/technologicals">ADMINAC</a>
                 </div>
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="/buildings">PANEL</a></li>
                     <li><a href="/airs">INVENTARIO A/C</a></li>
-                    <li><a href="#">INVENTARIO SENSORES</a></li>
+                    <li><a href="/sensors">INVENTARIO SENSORES</a></li>
                 </ul>
             </div>
         </nav>
