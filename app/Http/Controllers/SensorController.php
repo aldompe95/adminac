@@ -25,6 +25,7 @@ class SensorController extends Controller
             $sensor->brand = $request->brand;
             $sensor->model = $request->model;
             $sensor->description = $request->description;
+            $sensor->status = 0;
             $sensor->save();
             return redirect('/sensors');
         } catch(Exception $e) {

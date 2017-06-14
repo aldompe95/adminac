@@ -6,6 +6,7 @@ use Auth;
 use App\ActiveAir;
 use App\AirConditioner;
 use App\Area;
+use App\Sensor;
 use App\Repositories\ActiveAirRepository;
 use App\Http\Requests\ActiveAirAssignRequest;
 use Illuminate\Http\Request;
@@ -62,6 +63,14 @@ class ActiveAirController extends Controller
         $updateStatusAir->status = 0;
         $updateStatusActive = ActiveAir::find($id);
         $updateStatusActive->status = 0;
+        $updateStatusActiveSensor = $updateStatusActive->activeSensor()->where('status', 1)->get();
+        foreach ($updateStatusActiveSensor as $sensor) {
+            $sensor->status = 0;
+            $updateStatusSensor = Sensor::find($sensor->sensor_id);
+            $updateStatusSensor->status = 0;
+            $sensor->save();
+            $updateStatusSensor->save();
+        }
         $updateStatusAir->save();
         $updateStatusActive->save();
         // Tenemos que cambiar el valor del status del sensor

@@ -5,7 +5,7 @@ namespace App;
 use App\Area;
 use App\AirConditioner;
 use Illuminate\Database\Eloquent\Model;
-use App\Sensor;
+use App\ActiveSensor;
 use App\Performance;
 
 class ActiveAir extends Model
@@ -21,10 +21,9 @@ class ActiveAir extends Model
         return $this->belongsTo(Area::class);
     }
 
-    public function sensor()
+    public function activeSensor()
     {
-        return $this->belongsTo(Sensor::class);
-
+        return $this->hasMany(ActiveSensor::class);
     }
 
     public function performance()
